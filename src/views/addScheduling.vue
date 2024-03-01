@@ -1,10 +1,5 @@
 <template>
-    <SchedulingForm ref="form" />
-    <div style="margin: 16px;">
-        <van-button @click="submit" round block type="primary" native-type="submit">
-            提交
-        </van-button>
-    </div>
+    給班界面
 </template>
 
 <script setup>
