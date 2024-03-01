@@ -1,5 +1,5 @@
 import homeVue from "../views/home.vue";
-import addScheduling from '../views/addScheduling.vue'
+import availabilityScheduling from '../views/availabilityScheduling.vue'
 import list from '../views/list.vue'
 import statistical from '../views/statistical.vue'
 import account from '../views/account.vue'
@@ -11,7 +11,7 @@ import { auth } from '../axios/userApi';
 
 const routes = [
     { path: '/', component: homeVue, meta: { needLogin: true } },
-    { path: '/addScheduling', component: addScheduling, meta: { needLogin: true } },
+    { path: '/availabilityScheduling', component: availabilityScheduling, meta: { needLogin: true } },
     { path: '/list', component: list, meta: { needLogin: true } },
     { path: '/statistical', component: statistical, meta: { needLogin: true } },
     { path: '/login', name: 'login', component: login },

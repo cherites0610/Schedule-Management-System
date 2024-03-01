@@ -70,7 +70,6 @@ const exportData = () => {
     let outputText = '';
     
     for(let i=0;i<cycleDate.value.length;i++){
-        console.log(cycleDate.value[i].format())
         outputText+=cycleDate.value[i].format('MM/DD')+' : ';
         if(inputData.value[i]){
             outputText+=inputData.value[i]
