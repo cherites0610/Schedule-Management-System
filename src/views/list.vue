@@ -1,8 +1,25 @@
 <template>
   <van-pull-refresh v-model="loading" @refresh="getList">
-    <van-cell @click="calendarParameter.showCalendar = true" clickable center :label="dateShow" title="日期區間選擇">
-        調整排序
-        <van-icon @click="handleSortChange" :name="iconName" />
+    <van-cell  clickable center>
+      <template #title>
+        <van-space @click="calendarParameter.showCalendar = true" :fill="true">
+          日期選擇區間
+        </van-space>
+      </template>
+      <template #label>
+        <van-space :fill="true" @click="calendarParameter.showCalendar = true">
+          {{ dateShow }}
+        </van-space>
+        
+      </template>
+      <template #value>
+        <van-space @click="handleSortChange">
+          調整排序
+          <van-icon :name="iconName" />
+        </van-space>
+      </template>
+
+
     </van-cell>
     <Card v-for="(item, index) in schedulings" :scheduling="schedulings[index]" />
     <van-empty v-if="schedulings.length == 0" description="查無資料" />
@@ -63,16 +80,16 @@ const calendarConfirm = (date) => {
   calendarParameter.value.showCalendar = false;
 
   getList();
-  
+
 }
 
 function handleSortChange() {
-  if(iconName.value=='arrow-down'){
-    iconName.value='arrow-up';
-    order.value='123';
-  }else{
-    iconName.value='arrow-down';
-    order.value='ascending'
+  if (iconName.value == 'arrow-down') {
+    iconName.value = 'arrow-up';
+    order.value = '123';
+  } else {
+    iconName.value = 'arrow-down';
+    order.value = 'ascending'
   }
   const data = schedulings.value;
   if (order.value == "ascending") {
@@ -84,7 +101,7 @@ function handleSortChange() {
 }
 
 const getList = () => {
-  getListByID(uId.value,startDate.value,endDate.value).then((response) => {
+  getListByID(uId.value, startDate.value, endDate.value).then((response) => {
     schedulings.value = response.data
     handleSortChange('ascending')
     loading.value = false
